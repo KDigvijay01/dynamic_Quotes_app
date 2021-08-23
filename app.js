@@ -1,14 +1,6 @@
 console.log("Starting app.js");
 
-// const request = require('request');
-
-// const window = require('window');
-// const Window = require('window');
- 
-// const window= new Window();
-
 let {LocalStorage}=require('node-localstorage');
-// let  = require('../')  # require('node-localstorage') for you
 let localStorage = new LocalStorage('./scratch')
 
 const express = require('express');
@@ -20,8 +12,6 @@ app.use(express.static('public'));
 app.use(express.json());
 
 app.get('/',async(req,res)=>{
-    
-    // localStorage.clear();
     function generateRandomIntegerInRange(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
@@ -40,9 +30,9 @@ app.get('/',async(req,res)=>{
                 while(arr.indexOf(value)!==-1) {
                         const max=1640;
                         value= generateRandomIntegerInRange(1,max);
-                        console.log("The Random Value =",value);
+                        // console.log("The Random Value =",value);
                         if (arr.length===max){
-                            console.log("maximum limit exceeds");
+                            // console.log("maximum limit exceeds");
                             localStorage.clear();
                             arr=[]
                             break;
@@ -54,9 +44,7 @@ app.get('/',async(req,res)=>{
     }
     
     localStorage.setItem('keys',JSON.stringify(arr));
-    // console.log("final array=",arr);
-    // console.log("length of arr = ",arr.length);
-    // console.log("The Final Value =",value);
+   
 
     const item=await entity.findOne({s_no:value},(err,f)=>{
             if(!err){
